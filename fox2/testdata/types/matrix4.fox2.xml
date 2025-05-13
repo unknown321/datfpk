@@ -1,0 +1,12 @@
+<fox formatVersion="2" fileVersion="0">
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="transform_rotation_quat" type="Matrix4" container="StaticArray" arraySize="1">
+          <containerEntry r11="-0.7850379" r12="0" r13="-0.6194479" r14="0" r21="0" r22="1" r23="0" r24="0" r31="0.6194479" r32="0" r33="-0.7850379" r34="0" r41="-460.81" r42="324.0708" r43="453.448" r44="1"></containerEntry>
+        </property>
+      </staticProperties>
+      <dynamicProperties></dynamicProperties>
+    </entity>
+  </entities>
+</fox>

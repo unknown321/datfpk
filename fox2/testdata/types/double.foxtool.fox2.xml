@@ -1,0 +1,15 @@
+<fox formatVersion="2" fileVersion="0">
+  <classes>
+  </classes>
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="name" type="double" container="StaticArray" arraySize="2">
+          <value>12.8855</value>
+          <value>-756.147</value>
+        </property>
+      </staticProperties>
+      <dynamicProperties></dynamicProperties>
+    </entity>
+  </entities>
+</fox>

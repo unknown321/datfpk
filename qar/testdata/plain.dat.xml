@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ArchiveFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="QarFile" Name="plain.dat" Flags="3150304">
+  <Entries>
+    <Entry FilePath="/test.lua" Compressed="false" MetaFlag="true" />
+  </Entries>
+</ArchiveFile>

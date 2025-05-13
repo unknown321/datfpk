@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fox formatVersion="2" fileVersion="0" originalVersion="Mon May 12 10:57:54 UTC+03:00 2025">
+  <classes>
+    <class name="Entity" super="" version="2" />
+    <class name="Data" super="Entity" version="2" />
+    <class name="DataSet" super="" version="0" />
+  </classes>
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x02D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="name" type="int8" container="StringMap" arraySize="2">
+          <value key="valueOne">1</value>
+          <value key="valueTwo">2</value>
+        </property>
+      </staticProperties>
+      <dynamicProperties />
+    </entity>
+  </entities>
+</fox>

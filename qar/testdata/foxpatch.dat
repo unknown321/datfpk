@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxpatch>
+	<patch boot="mgsvtpp.exe" guid="471a19bc-b18b-4db8-a2b5-9b4c874c8a73" master="2f8f0203-824c-40f5-b14e-8e5068b32fd3" version="103"/>
+	<dlcs>
+		<dlc content_id="MGSVTUPDATEV0110" datastrap="" embed="1" name="MGSVTUPDATEV0110" submission_id=""/>
+	</dlcs>
+	<additionalimages>
+		<image name="mgo"/>
+	</additionalimages>
+</foxpatch>

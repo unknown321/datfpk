@@ -1,0 +1,13 @@
+<fox formatVersion="2" fileVersion="0">
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="name" type="EntityLink" container="StaticArray" arraySize="2">
+          <containerEntry packagePathHash="0xB8A0BF169F98" archivePath="/Assets/tpp/level/mission2/story/s10010/s10010_sequence.fox2" nameInArchive="CHK_AfterAwakeRoom_Player">0x5506910</containerEntry>
+          <containerEntry packagePathHash="0xB8A0BF169F98" archivePath="/Assets/tpp/level/mission2/story/s10010/s10010_sequence.fox2" nameInArchive="CHK_AfterEntrance_Player">0x417AC70</containerEntry>
+        </property>
+      </staticProperties>
+      <dynamicProperties></dynamicProperties>
+    </entity>
+  </entities>
+</fox>

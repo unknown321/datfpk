@@ -1,0 +1,1 @@
+.dat files are produced by [GzsTool](https://github.com/Atvaark/GzsTool)

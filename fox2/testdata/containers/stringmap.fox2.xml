@@ -1,0 +1,17 @@
+<fox formatVersion="2" fileVersion="0">
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="name" type="Int8" container="StringMap" arraySize="2">
+          <containerEntry key="valueOne">
+            <data>1</data>
+          </containerEntry>
+          <containerEntry key="valueTwo">
+            <data>2</data>
+          </containerEntry>
+        </property>
+      </staticProperties>
+      <dynamicProperties></dynamicProperties>
+    </entity>
+  </entities>
+</fox>

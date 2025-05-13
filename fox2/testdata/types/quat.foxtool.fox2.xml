@@ -1,0 +1,15 @@
+<fox formatVersion="2" fileVersion="0">
+  <classes>
+  </classes>
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="transform_rotation_quat" type="Quat" container="StaticArray" arraySize="2">
+          <value x="0" y="0" z="0" w="1" />
+          <value x="7" y="8" z="91.12" w="0" />
+        </property>
+      </staticProperties>
+      <dynamicProperties></dynamicProperties>
+    </entity>
+  </entities>
+</fox>

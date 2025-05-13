@@ -1,0 +1,18 @@
+<fox formatVersion="2" fileVersion="0">
+  <classes>
+  </classes>
+  <entities>
+    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+      <staticProperties>
+        <property name="transform_rotation_quat" type="Matrix3" container="StaticArray" arraySize="1">
+          <value>
+            <Row1 Column1="-0.7850366" Column2="0" Column3="-0.61944"/>
+            <Row2 Column1="0" Column2="1" Column3="0"/>
+            <Row3 Column1="0.61944" Column2="0" Column3="-0.7850366" />
+          </value>
+        </property>
+      </staticProperties>
+      <dynamicProperties></dynamicProperties>
+    </entity>
+  </entities>
+</fox>
