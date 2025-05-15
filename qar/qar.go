@@ -322,7 +322,7 @@ func (q *Qar) Extract(path string, hash uint64, outDir string) (int, error) {
 }
 
 func (q *Qar) SaveDefinition(writer io.Writer) error {
-	o, err := json.Marshal(q)
+	o, err := json.MarshalIndent(q, "", "  ")
 	if err != nil {
 		return fmt.Errorf("save definition: %w", err)
 	}

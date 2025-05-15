@@ -220,7 +220,7 @@ func (f *Fpk) Write(file io.ReadWriteSeeker, baseDir string) error {
 }
 
 func (f *Fpk) SaveDefinition(writer io.Writer) error {
-	o, err := json.Marshal(f)
+	o, err := json.MarshalIndent(f, "", "  ")
 	if err != nil {
 		return fmt.Errorf("save definition: %w", err)
 	}
