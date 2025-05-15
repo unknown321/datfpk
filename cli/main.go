@@ -237,6 +237,8 @@ func ExtractFpk(path string, outDir string) error {
 		}
 	}
 
+	f.Close()
+
 	descName := path + ".json"
 	desc, err := os.OpenFile(descName, os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0644)
 	if err != nil {

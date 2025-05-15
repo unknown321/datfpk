@@ -676,26 +676,33 @@ func TestFox2_WriteFromXML(t *testing.T) {
 		},
 		/*
 			{
-				name: "",
+				name: "o50050_sequence.fox2.xml",
 				args: args{
-					in:       "testdata/game/title_sequence.fox2.xml",
-					expected: "testdata/game/title_sequence.fox2",
+					in:       "testdata/game/o50050_sequence.fox2.xml",
+					expected: "",
 				},
 			},
-			{
-				name: "",
-				args: args{
-					in:       "testdata/game/player2_add_parts_prqst_x1.fox2.xml",
-					expected: "testdata/game/player2_add_parts_prqst_x1.fox2",
+				{
+					name: "",
+					args: args{
+						in:       "testdata/game/title_sequence.fox2.xml",
+						expected: "testdata/game/title_sequence.fox2",
+					},
 				},
-			},
-			{
-				name: "",
-				args: args{
-					in:       "testdata/game/s10010_sequence.fox2.xml",
-					expected: "testdata/game/s10010_sequence.fox2",
+				{
+					name: "",
+					args: args{
+						in:       "testdata/game/player2_add_parts_prqst_x1.fox2.xml",
+						expected: "testdata/game/player2_add_parts_prqst_x1.fox2",
+					},
 				},
-			},
+				{
+					name: "",
+					args: args{
+						in:       "testdata/game/s10010_sequence.fox2.xml",
+						expected: "testdata/game/s10010_sequence.fox2",
+					},
+				},
 		*/
 	}
 	for _, tt := range tests {

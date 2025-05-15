@@ -69,7 +69,7 @@ func (e *Entry) Read(reader io.ReadSeeker) error {
 	//)
 
 	if err := e.ReadData(reader); err != nil {
-		return fmt.Errorf("read data: %w", err)
+		return fmt.Errorf("read: %w", err)
 	}
 
 	return nil
@@ -80,10 +80,14 @@ func (e *Entry) ReadData(reader io.ReadSeeker) error {
 		return nil
 	}
 
-	curPos, _ := reader.Seek(0, io.SeekCurrent)
+	var curPos int64
+	var err error
+	if curPos, err = reader.Seek(0, io.SeekCurrent); err != nil {
+		return fmt.Errorf("curpos: %w", err)
+	}
 	//slog.Info("data", "offset", curPos)
 
-	_, err := reader.Seek(int64(e.DataOffset), io.SeekStart)
+	_, err = reader.Seek(int64(e.DataOffset), io.SeekStart)
 	if err != nil {
 		return fmt.Errorf("%w", err)
 	}

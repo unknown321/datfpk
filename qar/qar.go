@@ -256,7 +256,7 @@ func (q *Qar) ExtractTo(path string, hash uint64, writer io.Writer) (int, error)
 		hash2 := strings.TrimSuffix(path, filepath.Ext(path))
 		hashFromName, err = strconv.ParseUint(hash2, 16, 64)
 		if err != nil {
-			return 0, err
+			return 0, fmt.Errorf("hashFromName: %w", err)
 		}
 
 		hashFromName = hashing.JustAddExtension(hashFromName, filepath.Ext(path))

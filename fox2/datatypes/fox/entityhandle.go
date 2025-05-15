@@ -52,7 +52,7 @@ func (eh *EntityHandle) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 	}
 
 	if eh.Value, err = strconv.ParseUint(strings.TrimPrefix(ss.Value, "0x"), 16, 64); err != nil {
-		return err
+		return fmt.Errorf("entityHandle: %w", err)
 	}
 
 	return nil

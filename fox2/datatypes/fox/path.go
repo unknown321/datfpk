@@ -68,8 +68,8 @@ func (p *Path) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	}
 
 	if pp.Hash != "" {
-		if p.Hash, err = strconv.ParseUint(strings.TrimPrefix(pp.Value, "0x"), 16, 64); err != nil {
-			return err
+		if p.Hash, err = strconv.ParseUint(strings.TrimPrefix(pp.Hash, "0x"), 16, 64); err != nil {
+			return fmt.Errorf("Path: %w", err)
 		}
 	}
 

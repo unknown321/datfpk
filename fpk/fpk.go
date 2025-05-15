@@ -87,7 +87,7 @@ func (f *Fpk) ReadFrom(path string) error {
 	if file, err = os.Open(path); err != nil {
 		return fmt.Errorf("cannot open: %w", err)
 	}
-	defer file.Close()
+	//defer file.Close()
 
 	err = f.Read(file)
 	return nil
@@ -249,13 +249,18 @@ func (f *Fpk) Extract(path string, outDir string) error {
 	if err != nil {
 		return fmt.Errorf("extract open output file: %w", err)
 	}
-	defer outFile.Close()
+	//defer outFile.Close()
 
 	if err = f.ExtractTo(path, outFile); err != nil {
 		return fmt.Errorf("extract: %w", err)
 	}
 
 	return nil
+}
+func (f *Fpk) Close() {
+	if f.handle != nil {
+		f.handle.(*os.File).Close()
+	}
 }
 
 func (f *Fpk) ExtractTo(path string, outFile io.WriteSeeker) error {

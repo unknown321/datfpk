@@ -131,17 +131,17 @@ func (el *EntityLink) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error
 
 	if pp.ArchivePathHash != "" {
 		if el.ArchivePathHash, err = strconv.ParseUint(strings.TrimPrefix(pp.ArchivePathHash, "0x"), 16, 64); err != nil {
-			return err
+			return fmt.Errorf("entityLink, archivePathHash: %w", err)
 		}
 	}
 	if pp.NameInArchiveHash != "" {
 		if el.NameInArchiveHash, err = strconv.ParseUint(strings.TrimPrefix(pp.NameInArchiveHash, "0x"), 16, 64); err != nil {
-			return err
+			return fmt.Errorf("entityLink, nameInArchiveHash: %w", err)
 		}
 	}
 	if pp.PackagePathHash != "" {
 		if el.PackagePathHash, err = strconv.ParseUint(strings.TrimPrefix(pp.PackagePathHash, "0x"), 16, 64); err != nil {
-			return err
+			return fmt.Errorf("entityLink, packagePathHash: %w", err)
 		}
 	}
 
@@ -151,7 +151,7 @@ func (el *EntityLink) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error
 
 	if pp.EntityHandle != "" {
 		if el.EntityHandle, err = strconv.ParseUint(strings.TrimPrefix(pp.EntityHandle, "0x"), 16, 64); err != nil {
-			return err
+			return fmt.Errorf("entityHandle: %w", err)
 		}
 	}
 

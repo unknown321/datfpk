@@ -40,7 +40,7 @@ func (ep *EntityPtr) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 	}
 
 	if ep.Value, err = strconv.ParseUint(strings.TrimPrefix(ss.Value, "0x"), 16, 64); err != nil {
-		return err
+		return fmt.Errorf("entityPtr: %w", err)
 	}
 
 	return nil
