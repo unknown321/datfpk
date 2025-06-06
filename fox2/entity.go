@@ -2,7 +2,6 @@ package fox2
 
 import (
 	"datfpk/fox2/containers"
-	"datfpk/hashing"
 	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
@@ -10,6 +9,8 @@ import (
 	"io"
 	"strconv"
 	"strings"
+
+	"github.com/unknown321/hashing"
 )
 
 type EntityHeader struct {

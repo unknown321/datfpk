@@ -2,7 +2,6 @@ package qar
 
 import (
 	"bytes"
-	"datfpk/hashing"
 	"datfpk/util"
 	"encoding/binary"
 	"encoding/json"
@@ -13,6 +12,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/unknown321/hashing"
 )
 
 type Qar struct {

@@ -2,13 +2,14 @@ package containers
 
 import (
 	"datfpk/fox2/datatypes/fox"
-	"datfpk/hashing"
 	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
 	"fmt"
 	"io"
 	"log/slog"
+
+	"github.com/unknown321/hashing"
 )
 
 type FoxStringMapEntry struct {

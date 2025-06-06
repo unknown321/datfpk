@@ -5,11 +5,12 @@ import (
 	"compress/zlib"
 	"crypto/md5"
 	"datfpk/crypto"
-	"datfpk/hashing"
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	"io"
+
+	"github.com/unknown321/hashing"
 )
 
 type EntryHeader struct {

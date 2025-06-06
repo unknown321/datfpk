@@ -3,7 +3,6 @@ package fox2
 import (
 	"datfpk/fox2/containers"
 	"datfpk/fox2/datatypes/fox"
-	"datfpk/hashing"
 	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
@@ -11,6 +10,8 @@ import (
 	"io"
 	"log/slog"
 	"strconv"
+
+	"github.com/unknown321/hashing"
 )
 
 type PropertyHeader struct {

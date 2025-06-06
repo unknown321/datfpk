@@ -1,13 +1,14 @@
 package fox
 
 import (
-	"datfpk/hashing"
 	"encoding/binary"
 	"encoding/xml"
 	"fmt"
 	"io"
 	"strconv"
 	"strings"
+
+	"github.com/unknown321/hashing"
 )
 
 type Path struct {

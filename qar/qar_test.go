@@ -2,13 +2,14 @@ package qar
 
 import (
 	"bytes"
-	"datfpk/hashing"
 	"datfpk/util"
 	"encoding/binary"
 	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/unknown321/hashing"
 )
 
 type EntryFromDisk struct {

@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"datfpk/fox2/containers"
 	"datfpk/fox2/datatypes/fox"
-	"datfpk/hashing"
 	"encoding/xml"
 	"fmt"
 	"reflect"
 	"testing"
+
+	"github.com/unknown321/hashing"
 )
 
 func TestProperty_UnmarshalXML(t *testing.T) {

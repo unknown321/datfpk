@@ -1,9 +1,10 @@
 package fox2
 
 import (
-	"datfpk/hashing"
 	"encoding/binary"
 	"io"
+
+	"github.com/unknown321/hashing"
 )
 
 type StringLookupLiteral struct {

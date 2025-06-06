@@ -1,12 +1,13 @@
 package fox2
 
 import (
-	"datfpk/hashing"
 	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
 	"fmt"
 	"io"
+
+	"github.com/unknown321/hashing"
 )
 
 type Fox2 struct {

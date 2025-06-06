@@ -3,7 +3,6 @@ package fpk
 import (
 	"bytes"
 	"crypto/md5"
-	"datfpk/hashing"
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
@@ -11,6 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 	"unsafe"
+
+	"github.com/unknown321/hashing"
 )
 
 type Entry struct {

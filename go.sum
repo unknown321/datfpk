@@ -7,8 +7,10 @@ github.com/r3labs/diff/v3 v3.0.1/go.mod h1:f1S9bourRbiM66NskseyUdo0fTmEE0qKrikYJ
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1 h1:hDPOHmpOpP40lSULcqw7IrRb/u7w6RpDC9399XyoNd0=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/unknown321/cityhash v0.0.0-20250414103719-8b9c96d4f961 h1:NQ/P/YJ5PWfMFjilgjo0MQ9lJ7gwCsRuk75djOvElAE=
-github.com/unknown321/cityhash v0.0.0-20250414103719-8b9c96d4f961/go.mod h1:QVJK+yrAaYDX48UdKKhG6TU1M1L1V6KJvciTADO68qg=
+github.com/unknown321/cityhash v0.0.0-20250414150752-0134dcb10139 h1:d5ceFvXPy1riaGiYigf8pNSEuA2teNNtSEQ61r+7FKA=
+github.com/unknown321/cityhash v0.0.0-20250414150752-0134dcb10139/go.mod h1:QVJK+yrAaYDX48UdKKhG6TU1M1L1V6KJvciTADO68qg=
+github.com/unknown321/hashing v0.0.0-20250606105117-13394d1540eb h1:BQPCXmV47z8ZpPC+C6LZjgxe/tKaT6hBgg4rLUyu5ic=
+github.com/unknown321/hashing v0.0.0-20250606105117-13394d1540eb/go.mod h1:eU/88EXZMXhMg3mPY9JUu93xH4DKw5hIlJa7M6Z004E=
 github.com/vmihailenco/msgpack/v5 v5.3.5 h1:5gO0H1iULLWGhs2H5tbAHIZTV8/cYafcFOr9znI5mJU=
 github.com/vmihailenco/msgpack/v5 v5.3.5/go.mod h1:7xyJ9e+0+9SaZT0Wt1RGleJXzli6Q/V5KbhBonMG9jc=
 github.com/vmihailenco/tagparser/v2 v2.0.0 h1:y09buUbR+b5aycVFQs/g70pqKVZNBmxwAhO7/IwNM9g=

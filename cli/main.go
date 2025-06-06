@@ -3,7 +3,6 @@ package cli
 import (
 	"datfpk/fox2"
 	"datfpk/fpk"
-	"datfpk/hashing"
 	"datfpk/qar"
 	"encoding/json"
 	"flag"
@@ -12,6 +11,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/unknown321/hashing"
 )
 
 const dictionaryName = "dictionary.txt"
