@@ -257,7 +257,10 @@ func (q *Qar) ExtractTo(path string, hash uint64, writer io.Writer) (int, error)
 		hash2 := strings.TrimSuffix(path, filepath.Ext(path))
 		hashFromName, err = strconv.ParseUint(hash2, 16, 64)
 		if err != nil {
-			return 0, fmt.Errorf("hashFromName: %w", err)
+			hash2 = strings.TrimSuffix(hash2, filepath.Ext(hash2)) // entry=38dd243657e7f.2.ftexs
+			if hashFromName, err = strconv.ParseUint(hash2, 16, 64); err != nil {
+				return 0, fmt.Errorf("hashFromName: %w", err)
+			}
 		}
 
 		hashFromName = hashing.JustAddExtension(hashFromName, filepath.Ext(path))
@@ -316,7 +319,7 @@ func (q *Qar) Extract(path string, hash uint64, outDir string) (int, error) {
 
 	n := 0
 	if n, err = q.ExtractTo(path, hash, outFile); err != nil {
-		return 0, fmt.Errorf("extract: %w", err)
+		return 0, fmt.Errorf("qar extract: %w", err)
 	}
 
 	return n, nil
