@@ -1,6 +1,6 @@
 package main
 
-import "datfpk/cli"
+import "github.com/unknown321/datfpk/cli"
 
 func main() {
 	cli.Run()

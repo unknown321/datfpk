@@ -1,12 +1,12 @@
 package fox2
 
 import (
-	"datfpk/fox2/containers"
-	"datfpk/fox2/datatypes/fox"
-	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
 	"fmt"
+	"github.com/unknown321/datfpk/fox2/containers"
+	"github.com/unknown321/datfpk/fox2/datatypes/fox"
+	"github.com/unknown321/datfpk/util"
 	"io"
 	"log/slog"
 	"strconv"

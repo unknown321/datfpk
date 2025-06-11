@@ -2,9 +2,9 @@ package fox2
 
 import (
 	"bytes"
-	"datfpk/util"
 	"encoding/xml"
 	"fmt"
+	"github.com/unknown321/datfpk/util"
 	"os"
 	"testing"
 )

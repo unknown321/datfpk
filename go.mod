@@ -1,6 +1,6 @@
-module datfpk
+module github.com/unknown321/datfpk
 
-go 1.24.0
+go 1.24.4
 
 require (
 	github.com/r3labs/diff/v3 v3.0.1

@@ -1,9 +1,9 @@
 package fpk
 
 import (
-	"datfpk/util"
 	"encoding/json"
 	"fmt"
+	"github.com/unknown321/datfpk/util"
 	"io"
 	"log/slog"
 	"os"

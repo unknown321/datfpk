@@ -2,9 +2,9 @@ package fpk
 
 import (
 	"bytes"
-	"datfpk/util"
 	"encoding/json"
 	"github.com/r3labs/diff/v3"
+	"github.com/unknown321/datfpk/util"
 	"os"
 	"reflect"
 	"testing"

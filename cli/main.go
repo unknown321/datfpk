@@ -1,12 +1,12 @@
 package cli
 
 import (
-	"datfpk/fox2"
-	"datfpk/fpk"
-	"datfpk/qar"
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/unknown321/datfpk/fox2"
+	"github.com/unknown321/datfpk/fpk"
+	"github.com/unknown321/datfpk/qar"
 	"log/slog"
 	"os"
 	"path/filepath"

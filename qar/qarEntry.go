@@ -4,10 +4,10 @@ import (
 	"bytes"
 	"compress/zlib"
 	"crypto/md5"
-	"datfpk/crypto"
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
+	"github.com/unknown321/datfpk/crypto"
 	"io"
 
 	"github.com/unknown321/hashing"

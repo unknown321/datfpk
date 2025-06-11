@@ -1,11 +1,11 @@
 package containers
 
 import (
-	"datfpk/fox2/datatypes/fox"
-	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
 	"fmt"
+	"github.com/unknown321/datfpk/fox2/datatypes/fox"
+	"github.com/unknown321/datfpk/util"
 	"io"
 	"log/slog"
 

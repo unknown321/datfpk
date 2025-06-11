@@ -2,9 +2,9 @@ package qar
 
 import (
 	"bytes"
-	"datfpk/util"
 	"encoding/binary"
 	"fmt"
+	"github.com/unknown321/datfpk/util"
 	"os"
 	"path/filepath"
 	"testing"

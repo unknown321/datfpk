@@ -1,10 +1,10 @@
 package fox2
 
 import (
-	"datfpk/util"
 	"encoding/binary"
 	"encoding/xml"
 	"fmt"
+	"github.com/unknown321/datfpk/util"
 	"io"
 
 	"github.com/unknown321/hashing"

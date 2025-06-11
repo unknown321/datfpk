@@ -2,8 +2,8 @@ package qar
 
 import (
 	"bytes"
-	"datfpk/util"
 	"encoding/json"
+	"github.com/unknown321/datfpk/util"
 	"os"
 	"reflect"
 	"testing"
