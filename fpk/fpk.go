@@ -80,7 +80,7 @@ func (f *Fpk) UnmarshalJSON(bytes []byte) error {
 	return nil
 }
 
-func (f *Fpk) ReadFrom(path string) error {
+func (f *Fpk) ReadFrom(path string, printLog bool) error {
 	var file *os.File
 	var err error
 	f.FilePath = path
@@ -89,11 +89,11 @@ func (f *Fpk) ReadFrom(path string) error {
 	}
 	//defer file.Close()
 
-	err = f.Read(file)
+	err = f.Read(file, printLog)
 	return nil
 }
 
-func (f *Fpk) Read(reader io.ReadSeeker) error {
+func (f *Fpk) Read(reader io.ReadSeeker, printLog bool) error {
 	f.handle = reader
 
 	var err error
@@ -110,7 +110,9 @@ func (f *Fpk) Read(reader io.ReadSeeker) error {
 			return fmt.Errorf("entry %d read: %w", i, err)
 		}
 		f.Entries = append(f.Entries, e)
-		slog.Info("entry", "filePath", e.FilePath.Data)
+		if printLog {
+			slog.Info("entry", "filePath", e.FilePath.Data)
+		}
 	}
 
 	//o, _ = reader.Seek(0, io.SeekCurrent)
@@ -122,13 +124,15 @@ func (f *Fpk) Read(reader io.ReadSeeker) error {
 			return fmt.Errorf("reference %d read: %w", i, err)
 		}
 		f.References = append(f.References, r)
-		slog.Info("reference", "filePath", r.FilePath.Data, "dataOffset", r.FilePath.Header.Offset)
+		if printLog {
+			slog.Info("reference", "filePath", r.FilePath.Data, "dataOffset", r.FilePath.Header.Offset)
+		}
 	}
 
 	return nil
 }
 
-func (f *Fpk) Write(file io.ReadWriteSeeker, baseDir string) error {
+func (f *Fpk) Write(file io.ReadWriteSeeker, baseDir string, printLog bool) error {
 	var err error
 
 	headerSkip := int64(HeaderSize)
@@ -182,7 +186,9 @@ func (f *Fpk) Write(file io.ReadWriteSeeker, baseDir string) error {
 			return err
 		}
 
-		slog.Info("entry", "path", f.Entries[i].FilePath.Data)
+		if printLog {
+			slog.Info("entry", "path", f.Entries[i].FilePath.Data)
+		}
 	}
 
 	fSize, _ := file.Seek(0, io.SeekCurrent)

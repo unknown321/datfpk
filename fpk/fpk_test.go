@@ -212,7 +212,7 @@ func TestFpk_Read(t *testing.T) {
 			}
 			defer in.Close()
 
-			if err = f.Read(in); err != nil {
+			if err = f.Read(in, false); err != nil {
 				t.Fatalf("%s", err.Error())
 			}
 
@@ -271,7 +271,7 @@ func TestFpk_ReadReference(t *testing.T) {
 	defer in.Close()
 
 	f := Fpk{}
-	if err = f.Read(in); err != nil {
+	if err = f.Read(in, false); err != nil {
 		t.Fatalf("%s", err.Error())
 	}
 
@@ -354,7 +354,7 @@ func TestFpk_Write(t *testing.T) {
 	}
 
 	b := &util.ByteArrayReaderWriter{}
-	if err := f.Write(b, baseDir); err != nil {
+	if err := f.Write(b, baseDir, false); err != nil {
 		t.Fatalf("%s", err.Error())
 	}
 

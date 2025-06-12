@@ -225,7 +225,7 @@ func ExtractFpk(path string, outDir string) error {
 	}
 
 	f := fpk.Fpk{}
-	if err = f.ReadFrom(path); err != nil {
+	if err = f.ReadFrom(path, true); err != nil {
 		return fmt.Errorf("fpk(d) read: %w", err)
 	}
 
@@ -285,7 +285,7 @@ func PackFpk(jsonDefinitionPath string, outPath string, inputDir string) error {
 	}
 	slog.Info("input", "directory", inputDir, "output", outPath)
 
-	if err = q.Write(out, inputDir); err != nil {
+	if err = q.Write(out, inputDir, true); err != nil {
 		slog.Error("write fpk", "error", err.Error())
 		os.Exit(1)
 	}
