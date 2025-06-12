@@ -498,3 +498,18 @@ func (q *Qar) EncryptSections(sections []uint64) ([]byte, error) {
 
 	return out, nil
 }
+
+func (q *Qar) ReadFile(path string) ([]byte, error) {
+	ph := hashing.HashFileNameWithExtension(path)
+	for _, v := range q.Entries {
+		if v.Header.PathHash == ph {
+			if err := v.ReadData(q.handle); err != nil {
+				return nil, err
+			}
+
+			return v.Data, nil
+		}
+	}
+
+	return nil, fmt.Errorf("file not found")
+}
