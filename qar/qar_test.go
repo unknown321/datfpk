@@ -139,7 +139,7 @@ func TestQar_Write(t *testing.T) {
 			}
 
 			out := &util.ByteArrayReaderWriter{}
-			if err = q.Write(out, ""); (err != nil) != tt.wantErr {
+			if err = q.Write(out, "", false); (err != nil) != tt.wantErr {
 				t.Errorf("Write() error = %v, wantErr %v", err, tt.wantErr)
 			}
 

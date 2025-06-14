@@ -198,7 +198,7 @@ func PackQar(jsonDefinitionPath string, outPath string, inputDir string) error {
 	}
 	slog.Info("input", "directory", inputDir, "output", outPath)
 
-	if err = q.Write(out, inputDir); err != nil {
+	if err = q.Write(out, inputDir, true); err != nil {
 		slog.Error("write QAR", "error", err.Error())
 		os.Exit(1)
 	}

@@ -297,6 +297,10 @@ func (q *Qar) ExtractTo(path string, hash uint64, writer io.Writer) (int, error)
 	return n, nil
 }
 
+// Extract extracts entry with <hash> to <outDir>, optionally using <path> as output filename
+// example: extract file with hash 0x123456 to /tmp/test with name /assets/test:
+//
+//	q.Extract("/assets/test", 0x123456, "/tmp/test")
 func (q *Qar) Extract(path string, hash uint64, outDir string) (int, error) {
 	datDirName := outDir
 	workdir := ""
@@ -338,7 +342,7 @@ func (q *Qar) SaveDefinition(writer io.Writer) error {
 	return nil
 }
 
-func (q *Qar) Write(file io.ReadWriteSeeker, baseDir string) error {
+func (q *Qar) Write(file io.ReadWriteSeeker, baseDir string, printLog bool) error {
 	shift := 10 // 1024
 	if q.Flags&0x800 > 0 {
 		shift = 12 // 4096
@@ -361,11 +365,13 @@ func (q *Qar) Write(file io.ReadWriteSeeker, baseDir string) error {
 
 	sections := make([]uint64, len(q.Entries))
 	for i, e := range q.Entries {
-		slog.Info("writing",
-			"entry", e.Header.FilePath,
-			"encrypted", fmt.Sprintf("%x", e.DataHeader.EncryptionMagic),
-			"key", fmt.Sprintf("%x", e.DataHeader.Key),
-		)
+		if printLog {
+			slog.Info("writing",
+				"entry", e.Header.FilePath,
+				"encrypted", fmt.Sprintf("%x", e.DataHeader.EncryptionMagic),
+				"key", fmt.Sprintf("%x", e.DataHeader.Key),
+			)
+		}
 		e.Header.Version = q.Version
 
 		if e.Header.NameHashForPacking == 0 {
