@@ -11,41 +11,16 @@ import (
 )
 
 type Fox2 struct {
-	FormatVersion        int      `xml:"formatVersion,attr"`
-	FileVersion          int      `xml:"fileVersion,attr"`
-	Header               Header   `xml:"-"`
-	Entities             []Entity `xml:"entities>entity"`
-	Classes              []Class
+	FormatVersion        int                   `xml:"formatVersion,attr"`
+	FileVersion          int                   `xml:"fileVersion,attr"`
+	Header               Header                `xml:"-"`
+	Entities             []Entity              `xml:"entities>entity"`
 	StringLookupLiterals []StringLookupLiteral `xml:"-"`
 }
 
 var Trailer = []byte{0x00, 0x00, 0x65, 0x6E, 0x64} // 0 0 end
 
 var fox2dict = make(map[uint64]string)
-
-//func Init(dictPath string) error {
-//	if dictPath == "" {
-//		dictPath = "fox_dictionary.txt"
-//	}
-//
-//	fox2dict = make(map[uint64]string)
-//
-//		f, err := os.ReadFile(dictPath)
-//		if err != nil {
-//			return fmt.Errorf("fox dictionary: %w", err)
-//		}
-//
-//		for _, line := range bytes.Split(f, []byte("\n")) {
-//			qq := bytes.TrimSuffix(line, []byte("\r"))
-//			v := hashing.StrCode64(qq)
-//			fox2dict[v] = string(qq)
-//		}
-//
-//		return nil
-//}
-
-type Class struct {
-}
 
 func (f *Fox2) Read(reader io.ReadSeeker) error {
 	var err error
