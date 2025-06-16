@@ -43,3 +43,11 @@ func (h *Header) Write(writer io.Writer) error {
 	h.MagicNumber2 = 2
 	return binary.Write(writer, binary.LittleEndian, h)
 }
+
+func (h *Header) SetType(isFpkd bool) {
+	if isFpkd {
+		h.Magic = MagicFpkd
+	} else {
+		h.Magic = MagicFpk
+	}
+}
