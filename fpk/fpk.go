@@ -292,3 +292,7 @@ func (f *Fpk) ExtractTo(path string, outFile io.WriteSeeker) error {
 
 	return nil
 }
+
+func (f *Fpk) SetType(isFpkd bool) {
+	f.Header.SetType(isFpkd)
+}

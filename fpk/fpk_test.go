@@ -112,11 +112,9 @@ func TestFpk_Read(t *testing.T) {
 				Header: Header{
 					Magic:        [10]byte{},
 					FileSize:     1984,
-					Skip:         [18]byte{},
 					MagicNumber2: 2,
 					EntryCount:   1,
 					RefCount:     0,
-					Skip2:        0,
 				},
 				Entries: []Entry{{
 					DataOffset: 176,
@@ -144,11 +142,9 @@ func TestFpk_Read(t *testing.T) {
 				Header: Header{
 					Magic:        [10]byte{},
 					FileSize:     5424,
-					Skip:         [18]byte{},
 					MagicNumber2: 2,
 					EntryCount:   3,
 					RefCount:     0,
-					Skip2:        0,
 				},
 				Entries: []Entry{
 					{
@@ -279,11 +275,9 @@ func TestFpk_ReadReference(t *testing.T) {
 		Header: Header{
 			Magic:        [10]byte{},
 			FileSize:     464,
-			Skip:         [18]byte{},
 			MagicNumber2: 2,
 			EntryCount:   1,
 			RefCount:     2,
-			Skip2:        0,
 		},
 		Entries: []Entry{},
 		References: []Reference{

@@ -10,11 +10,11 @@ import (
 type Header struct {
 	Magic        [10]byte
 	FileSize     uint32
-	Skip         [18]byte
+	_            [18]byte
 	MagicNumber2 uint32
 	EntryCount   uint32
 	RefCount     uint32
-	Skip2        uint32
+	_            uint32
 }
 
 const HeaderSize = 48
