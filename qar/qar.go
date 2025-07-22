@@ -343,6 +343,8 @@ func (q *Qar) SaveDefinition(writer io.Writer) error {
 }
 
 func (q *Qar) Write(file io.ReadWriteSeeker, baseDir string, printLog bool) error {
+	q.handle = file
+
 	shift := 10 // 1024
 	if q.Flags&0x800 > 0 {
 		shift = 12 // 4096
