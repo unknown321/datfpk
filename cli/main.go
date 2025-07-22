@@ -7,6 +7,7 @@ import (
 	"github.com/unknown321/datfpk/fox2"
 	"github.com/unknown321/datfpk/fpk"
 	"github.com/unknown321/datfpk/qar"
+	"github.com/unknown321/datfpk/util"
 	"log/slog"
 	"os"
 	"path/filepath"
@@ -307,30 +308,43 @@ func Run() {
 	out := flag.String("out", "", "output file/directory (default <filename>_<extension>/)")
 	jsonPath := flag.String("json", "", "path to qar definition file (.json)")
 	inputDir := flag.String("in", "", "input directory path (default <jsonFilename>_<extension>/)")
+	printVer := flag.Bool("version", false, "print version")
 
 	flag.CommandLine.SetOutput(os.Stdout)
 	flag.Usage = func() {
 		fmt.Printf("Usage of %s:\n", os.Args[0])
 		fmt.Println("Pack/unpack MGSV:TPP file formats.")
-		fmt.Println("")
+		fmt.Println()
 		fmt.Println("Unpack (short syntax):")
 		fmt.Printf("\t%s file.dat [dictionary.txt]\n", os.Args[0])
 		fmt.Printf("\t%s file.dat [output dir] [dictionary.txt]\n", os.Args[0])
 		fmt.Printf("\t%s file.fpk [output dir]\n", os.Args[0])
 		fmt.Printf("\t%s file.fox2 [output file]\n", os.Args[0])
-		fmt.Println("")
+		fmt.Println()
 		fmt.Println("Pack (short syntax):")
 		fmt.Printf("\t%s definition.json [output file] [input dir]\n", os.Args[0])
 		fmt.Printf("\t%s file.fox2.xml [output file]\n", os.Args[0])
-		fmt.Println("")
+		fmt.Println()
 		fmt.Println("Options:")
-		fmt.Println("")
+		flag.PrintDefaults()
+		fmt.Println()
 		fmt.Println("Tips:")
 		fmt.Printf("  - Get dictionary.txt from %s\n", dictUrl)
 		fmt.Printf("  - Create empty dictionary.txt to skip filename resolution.\n")
 	}
 
 	flag.Parse()
+
+	if *printVer {
+		v, err := util.GetVersion()
+		if err != nil {
+			slog.Error(err.Error())
+			os.Exit(1)
+		}
+
+		slog.Info("version", "commit", v.Commit, "build date", v.Date, "dirty", fmt.Sprintf("%t", v.Dirty))
+		os.Exit(0)
+	}
 
 	if len(os.Args) > 1 {
 		if strings.HasSuffix(os.Args[1], ".dat") {

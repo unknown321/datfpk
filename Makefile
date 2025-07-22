@@ -7,7 +7,7 @@ ifeq ($(GOOS),windows)
 	override EXT=".exe"
 endif
 
-IMAGE=golang:1.24.4-alpine
+IMAGE=golang:1.24.5
 DOCKER=docker run -t --rm \
 		-u $$(id -u):$$(id -g) \
 		-v $$(pwd):$$(pwd) \
@@ -23,6 +23,8 @@ test:
 
 build:
 	$(DOCKER) go build -trimpath \
+				-ldflags="-w -s" \
+				-buildvcs \
 				-o $(NAME)
 
 release: test

@@ -2,7 +2,9 @@ package util
 
 import (
 	"errors"
+	"fmt"
 	"io"
+	"runtime/debug"
 )
 
 // TODO WriteSeeker -> Writer
@@ -117,4 +119,39 @@ func CompactStringSlice(s []string) []string {
 		}
 	}
 	return s
+}
+
+type Version struct {
+	Commit string
+	Date   string
+	Dirty  bool
+}
+
+func GetVersion() (Version, error) {
+	bf, ok := debug.ReadBuildInfo()
+	if !ok {
+		return Version{}, fmt.Errorf("cannot read build info")
+	}
+
+	commit := ""
+	commitDate := ""
+	dirty := false
+
+	for _, k := range bf.Settings {
+		switch k.Key {
+		case "vcs.revision":
+			commit = k.Value
+		case "vcs.time":
+			commitDate = k.Value
+		case "vcs.modified":
+			dirty = k.Value == "true"
+		default:
+		}
+	}
+
+	return Version{
+		Commit: commit,
+		Date:   commitDate,
+		Dirty:  dirty,
+	}, nil
 }
