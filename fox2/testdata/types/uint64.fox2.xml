@@ -1,6 +1,6 @@
 <fox formatVersion="2" fileVersion="0">
   <entities>
-    <entity class="DataSet" classVersion="0" addr="0x2D752C0" unknown1="232" unknown2="331488">
+    <entity class="DataSet" classVersion="0" classID="0xE8" addr="0x2D752C0" id="0x50EE0">
       <staticProperties>
         <property name="name" type="UInt64" container="StaticArray" arraySize="2">
           <containerEntry>1</containerEntry>

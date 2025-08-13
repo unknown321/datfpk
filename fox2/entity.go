@@ -15,13 +15,10 @@ import (
 
 type EntityHeader struct {
 	HeaderSize           int16
-	Unknown1             int16
-	_                    int16
+	ClassID              uint32
 	Magic1               uint32
-	Address              uint32
-	_                    uint32
-	Unknown2             int32
-	Unknown5             int32
+	Address              uint64
+	ID                   uint64
 	Version              int16
 	ClassNameHash        uint64
 	StaticPropertyCount  uint16
@@ -62,10 +59,9 @@ func (e *Entity) Resolve(dict map[uint64]string) {
 type entityXml struct {
 	Class             string     `xml:"class,attr"`
 	ClassVersion      int16      `xml:"classVersion,attr"`
+	ClassID           string     `xml:"classID,omitempty,attr"`
 	Addr              string     `xml:"addr,attr"`
-	Unknown1          int16      `xml:"unknown1,omitempty,attr"`
-	Unknown2          int32      `xml:"unknown2,omitempty,attr"`
-	Unknown5          int32      `xml:"unknown5,omitempty,attr"`
+	ID                string     `xml:"id,attr"`
 	StaticProperties  []Property `xml:"staticProperties>property"`
 	DynamicProperties []Property `xml:"dynamicProperties>property"`
 }
@@ -76,9 +72,8 @@ func (e *Entity) MarshalXML(encoder *xml.Encoder, start xml.StartElement) error 
 		Class:             e.ClassNameString,
 		ClassVersion:      e.Header.Version,
 		Addr:              fmt.Sprintf("0x%X", e.Header.Address),
-		Unknown1:          e.Header.Unknown1,
-		Unknown2:          e.Header.Unknown2,
-		Unknown5:          e.Header.Unknown5,
+		ClassID:           fmt.Sprintf("0x%X", e.Header.ClassID),
+		ID:                fmt.Sprintf("0x%X", e.Header.ID),
 		StaticProperties:  e.StaticProperties,
 		DynamicProperties: e.DynamicProperties,
 	}
@@ -99,11 +94,18 @@ func (e *Entity) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	if err != nil {
 		return err
 	}
-	e.Header.Address = uint32(addr)
+	e.Header.Address = uint64(addr)
 
-	e.Header.Unknown1 = xx.Unknown1
-	e.Header.Unknown2 = xx.Unknown2
-	e.Header.Unknown5 = xx.Unknown5
+	cid, err := strconv.ParseInt(strings.TrimPrefix(xx.ClassID, "0x"), 16, 32)
+	if err != nil {
+		return err
+	}
+	e.Header.ClassID = uint32(cid)
+	id, err := strconv.ParseInt(strings.TrimPrefix(xx.ID, "0x"), 16, 64)
+	if err != nil {
+		return err
+	}
+	e.Header.ID = uint64(id)
 	e.StaticProperties = xx.StaticProperties
 	e.DynamicProperties = xx.DynamicProperties
 
