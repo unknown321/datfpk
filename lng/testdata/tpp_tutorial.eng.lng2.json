@@ -1,0 +1,467 @@
+{
+  "type": "Lng",
+  "version": 3,
+  "endianness": "BE",
+  "entries": [
+    {
+      "lang_id": "tutorial_bino",
+      "color": 1,
+      "value": "<I=G=BINOS> Hold: Binoculars"
+    },
+    {
+      "lang_id": "tutorial_bino_zoom",
+      "color": 1,
+      "value": "<I=G=PAD_R3>: Change zoom"
+    },
+    {
+      "lang_id": "tutorial_optionalradio",
+      "color": 1,
+      "value": "<I=G=CALL> Tap: Intel support call"
+    },
+    {
+      "lang_id": "tutorial_advice",
+      "color": 1,
+      "value": "<I=G=CALL> Tap: Radio (request intel)"
+    },
+    {
+      "lang_id": "tutorial_set_marker",
+      "color": 1,
+      "value": "<I=G=HOLD>: Place/remove marker"
+    },
+    {
+      "key": "0xe1d18a77",
+      "color": 1,
+      "value": "<I=G=HOLD>: Launch"
+    },
+    {
+      "lang_id": "tutorial_smoke",
+      "color": 1,
+      "value": "<I=G=HOLD>: Disperse smoke"
+    },
+    {
+      "key": "0x471be6e0",
+      "color": 1,
+      "value": "<I=G=HOLD>: Disperse sleeping gas"
+    },
+    {
+      "lang_id": "tutorial_shield",
+      "color": 1,
+      "value": "<I=G=PAD_L2>: Drop shield"
+    },
+    {
+      "key": "0xf7586924",
+      "color": 1,
+      "value": "<I=G=PAD_Y>: Change function"
+    },
+    {
+      "lang_id": "tutorial_horse_call",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=CALL>: Call horse"
+    },
+    {
+      "lang_id": "tutorial_horse_hide",
+      "color": 1,
+      "value": "<I=G=STANCE>: Hide on horseback/return upright"
+    },
+    {
+      "lang_id": "tutorial_horse_hide_change",
+      "color": 1,
+      "value": "<I=G=STOCK>: Change hiding position left/right"
+    },
+    {
+      "lang_id": "tutorial_horse_run",
+      "color": 1,
+      "value": "<I=G=EVADE>: Speed up horse"
+    },
+    {
+      "lang_id": "tutorial_horse_rideon",
+      "color": 1,
+      "value": "<I=G=ACTION>: Mount/dismount horse"
+    },
+    {
+      "lang_id": "tutorial_horse_puton",
+      "color": 1,
+      "value": "<I=G=RELOAD> Hold: Place on horse"
+    },
+    {
+      "lang_id": "tutorial_get_info",
+      "color": 1,
+      "value": "<I=G=ACTION>: Acquire intel"
+    },
+    {
+      "key": "0xf87b6e99",
+      "color": 1,
+      "value": "<I=G=ACTION>: Untie restraints"
+    },
+    {
+      "lang_id": "tutorial_mb_device",
+      "color": 1,
+      "value": "<I=G=MBDEVICE>: Open/close iDroid"
+    },
+    {
+      "lang_id": "tutorial_searchlight_onoff",
+      "color": 1,
+      "value": "<I=G=PAD_RIGHT>: Turn light ON/OFF"
+    },
+    {
+      "lang_id": "tutorial_toilet_hide",
+      "color": 1,
+      "value": "<I=G=ACTION>: Hide inside toilet/exit toilet"
+    },
+    {
+      "lang_id": "tutorial_toilet_putin",
+      "color": 1,
+      "value": "<I=G=RELOAD>: Place inside toilet"
+    },
+    {
+      "lang_id": "tutorial_garbagebox_hide",
+      "color": 1,
+      "value": "<I=G=ACTION>: Hide inside dumpster/exit dumpster"
+    },
+    {
+      "lang_id": "tutorial_garbagebox_putin",
+      "color": 1,
+      "value": "<I=G=RELOAD>: Place inside dumpster"
+    },
+    {
+      "lang_id": "tutorial_ladder",
+      "color": 1,
+      "value": "<I=G=ACTION>: Climb up/down ladder"
+    },
+    {
+      "lang_id": "tutorial_cliff",
+      "color": 1,
+      "value": "<I=G=ACTION>: Climb up/down cliff"
+    },
+    {
+      "lang_id": "tutorial_power_onoff",
+      "color": 1,
+      "value": "<I=G=ACTION>: Turn power ON/OFF"
+    },
+    {
+      "lang_id": "tutorial_attack",
+      "color": 1,
+      "value": "<I=G=HOLD>+<I=G=ATTACK>: Use weapon (ready + attack)"
+    },
+    {
+      "lang_id": "tutorial_elude_up",
+      "color": 1,
+      "value": "<I=G=ACTION>: Climb back up"
+    },
+    {
+      "lang_id": "tutorial_elude_down",
+      "color": 1,
+      "value": "<I=G=STANCE>: Drop down"
+    },
+    {
+      "lang_id": "tutorial_cure",
+      "color": 1,
+      "value": "<I=G=ACTION>: First Aid"
+    },
+    {
+      "lang_id": "tutorial_reload",
+      "color": 1,
+      "value": "<I=G=RELOAD>: Reload"
+    },
+    {
+      "lang_id": "tutorial_jump",
+      "color": 1,
+      "value": "<I=G=ACTION> while tilting <I=G=MOVE>: Jump "
+    },
+    {
+      "lang_id": "tutorial_shoulder",
+      "color": 1,
+      "value": "<I=G=RELOAD> Hold: Carry/set down"
+    },
+    {
+      "lang_id": "tutorial_shoulder_throw",
+      "color": 1,
+      "value": "<I=G=ATTACK>: Throw"
+    },
+    {
+      "lang_id": "tutorial_stance",
+      "color": 1,
+      "value": "<I=G=STANCE>: Change stance (stand/crouch/prone)"
+    },
+    {
+      "lang_id": "tutorial_equipment_wp",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=PAD_ALL>: Select/equip weapon or item"
+    },
+    {
+      "lang_id": "tutorial_look_in",
+      "color": 1,
+      "value": "<I=G=STOCK> Hold: Peek"
+    },
+    {
+      "lang_id": "tutorial_fence_jump",
+      "color": 1,
+      "value": "<I=G=ACTION>: Climb obstacle/fence"
+    },
+    {
+      "lang_id": "tutorial_rolling",
+      "color": 1,
+      "value": "<I=G=MOVE>+<I=G=DASH> while holding <I=G=HOLD>: Roll (move + roll)"
+    },
+    {
+      "lang_id": "tutorial_cover_attack",
+      "color": 1,
+      "value": "<I=G=HOLD>+<I=G=ATTACK>: Cover attack (ready + attack)"
+    },
+    {
+      "lang_id": "tutorial_pause",
+      "color": 1,
+      "value": "<I=G=PAUSE>: Pause"
+    },
+    {
+      "lang_id": "tutorial_vehicle_rideon",
+      "color": 1,
+      "value": "<I=G=ACTION>: Enter vehicle"
+    },
+    {
+      "lang_id": "tutorial_vehicle_puton",
+      "color": 1,
+      "value": "<I=G=RELOAD> Hold: Place in vehicle"
+    },
+    {
+      "lang_id": "tutorial_accelarater",
+      "color": 1,
+      "value": "<I=G=PAD_R2>: Accelerate"
+    },
+    {
+      "lang_id": "tutorial_brake",
+      "color": 1,
+      "value": "<I=G=PAD_L2>: Brake/reverse"
+    },
+    {
+      "lang_id": "tutorial_heli_rideon",
+      "color": 1,
+      "value": "<I=G=ACTION>: Board helicopter"
+    },
+    {
+      "lang_id": "tutorial_heli_puton",
+      "color": 1,
+      "value": "<I=G=RELOAD> Hold: Place in helicopter"
+    },
+    {
+      "lang_id": "tutorial_attack_machinegun",
+      "color": 1,
+      "value": "<I=G=ATTACK>: Attack using machine gun"
+    },
+    {
+      "lang_id": "tutorial_attack_mortar",
+      "color": 1,
+      "value": "<I=G=ATTACK>: Attack using mortar"
+    },
+    {
+      "lang_id": "tutorial_attack_anti_aircraft",
+      "color": 1,
+      "value": "<I=G=ATTACK>: Attack using anti-air cannon"
+    },
+    {
+      "lang_id": "tutorial_hulton",
+      "color": 1,
+      "value": "<I=G=ACTION> Hold: Fulton recovery"
+    },
+    {
+      "lang_id": "tutorial_pipe",
+      "color": 1,
+      "value": "<I=G=ACTION>: Climb up/down pipe"
+    },
+    {
+      "lang_id": "tutorial_cqc",
+      "color": 1,
+      "value": "<I=G=ATTACK>: CQC (strike/throw/restrain)"
+    },
+    {
+      "lang_id": "tutorial_cqc_punch",
+      "color": 1,
+      "value": "<I=G=ATTACK> Repeatedly: Strike"
+    },
+    {
+      "lang_id": "tutorial_cqc_throw",
+      "color": 1,
+      "value": "Tap <I=G=ATTACK> while tilting <I=G=MOVE>: throw"
+    },
+    {
+      "lang_id": "tutorial_restraint2",
+      "color": 1,
+      "value": "<I=G=ATTACK> Hold: Restrain"
+    },
+    {
+      "lang_id": "tutorial_restraint",
+      "color": 1,
+      "value": "<I=G=CQC> Hold: Restrain"
+    },
+    {
+      "lang_id": "tutorial_interrogation",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=CALL>: Interrogate"
+    },
+    {
+      "lang_id": "tutorial_swoon",
+      "color": 1,
+      "value": "<I=G=ATTACK> Repeatedly: Choke (knock out)"
+    },
+    {
+      "lang_id": "tutorial_kill",
+      "color": 1,
+      "value": "<I=G=ACTION>: Slit throat (kill)"
+    },
+    {
+      "key": "0x1f40fd6d",
+      "color": 1,
+      "value": "While striking, hold <I=G=HOLD>: Steal weapon"
+    },
+    {
+      "lang_id": "tutorial_cqc_combo",
+      "color": 1,
+      "value": "After throwing, tap <I=G=ATTACK> again: Consecutive CQC"
+    },
+    {
+      "lang_id": "tutorial_get_item",
+      "color": 1,
+      "value": "<I=G=RELOAD> Hold: Pick up item"
+    },
+    {
+      "key": "0x8a311f47",
+      "color": 1,
+      "value": "<I=G=ACTION>: Pick up supply drop"
+    },
+    {
+      "lang_id": "tutorial_C4_set",
+      "color": 1,
+      "value": "<I=G=HOLD>+<I=G=ATTACK>: Place C-4 (ready + place)"
+    },
+    {
+      "lang_id": "tutorial_C4_exploding",
+      "color": 1,
+      "value": "<I=G=HOLD>+<I=G=ACTION>: Detonate C-4 (ready + detonate)"
+    },
+    {
+      "lang_id": "tutorial_change_camera",
+      "color": 1,
+      "value": "<I=G=BINOS> Tap: Switch camera (shoulder/first-person)"
+    },
+    {
+      "lang_id": "tutorial_heli_getoff",
+      "color": 1,
+      "value": "<I=G=ACTION>: Disembark helicopter"
+    },
+    {
+      "lang_id": "tutorial_knock",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=CALL>: Knock (lure enemy)"
+    },
+    {
+      "lang_id": "tutorial_change_barrel",
+      "color": 1,
+      "value": "<I=G=HOLD>+<I=G=ACTION>: Switch to underbarrel (ready + change)"
+    },
+    {
+      "lang_id": "tutorial_camera_move",
+      "color": 1,
+      "value": "<I=G=CAMERA>: Move camera"
+    },
+    {
+      "lang_id": "tutorial_camera_zoom",
+      "color": 1,
+      "value": "<I=G=CAMERA> Hold: Zoom camera"
+    },
+    {
+      "lang_id": "tutorial_camera_change",
+      "color": 1,
+      "value": "<I=G=STOCK> Tap: Switch camera position left/right"
+    },
+    {
+      "lang_id": "tutorial_play_move",
+      "color": 1,
+      "value": "<I=G=MOVE>: Move"
+    },
+    {
+      "lang_id": "tutorial_play_cover",
+      "color": 1,
+      "value": "Tilt <I=G=MOVE> toward a wall: Cover (stick to wall)"
+    },
+    {
+      "lang_id": "tutorial_play_dash",
+      "color": 1,
+      "value": "<I=G=DASH>: Dash"
+    },
+    {
+      "lang_id": "tutorial_play_evade",
+      "color": 1,
+      "value": "<I=G=EVADE>: Quick dive"
+    },
+    {
+      "key": "0x6f8b008d",
+      "color": 1,
+      "value": "Slowly tilt <I=G=MOVE> toward a cliff: Hang"
+    },
+    {
+      "key": "0xb09bb927",
+      "color": 1,
+      "value": "While in cover, hold <I=G=STOCK>: Peek"
+    },
+    {
+      "lang_id": "tutorial_cancel",
+      "color": 1,
+      "value": "<I=G=CANCEL>: Cancel"
+    },
+    {
+      "lang_id": "tutorial_sonar",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=CALL>: Use sonar (bio-detector)"
+    },
+    {
+      "lang_id": "tutorial_order_buddy",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=CALL>: Orders to buddy"
+    },
+    {
+      "lang_id": "tutorial_order_child",
+      "color": 1,
+      "value": "<I=G=PAD_RS> while holding <I=G=CALL>: Orders to children"
+    },
+    {
+      "key": "0x3167fd88",
+      "color": 1,
+      "value": "<I=G=STANCE>: In vehicle, hide/return upright"
+    },
+    {
+      "key": "0x6db103f1",
+      "color": 1,
+      "value": "<I=G=PAUSE>: View tips (pause screen)"
+    },
+    {
+      "lang_id": "tutorial_show_controller",
+      "color": 1,
+      "value": "<I=G=PAUSE>: View controls (pause screen)"
+    },
+    {
+      "lang_id": "tutorial_stance2",
+      "color": 1,
+      "value": "<I=G=STANCE> Hold: Prone"
+    },
+    {
+      "lang_id": "tutorial_stance3",
+      "color": 1,
+      "value": "<I=G=STANCE>: Crouch"
+    },
+    {
+      "lang_id": "tutorial_shield2",
+      "color": 1,
+      "value": "<I=G=ACTION> while readying shield: Hide behind shield/exit cover"
+    },
+    {
+      "lang_id": "tutorial_v_fps_tps",
+      "color": 1,
+      "value": "<I=G=PAD_R1>: Switch camera (third-person/shoulder/first-person)"
+    },
+    {
+      "lang_id": "tutorial_v_attack",
+      "color": 1,
+      "value": "<I=G=PAD_L1>: Attack"
+    }
+  ]
+}

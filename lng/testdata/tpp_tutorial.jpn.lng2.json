@@ -1,0 +1,467 @@
+{
+  "type": "Lng",
+  "version": 3,
+  "endianness": "BE",
+  "entries": [
+    {
+      "lang_id": "tutorial_bino",
+      "color": 1,
+      "value": "<I=G=BINOS>押している間：双眼鏡"
+    },
+    {
+      "lang_id": "tutorial_bino_zoom",
+      "color": 1,
+      "value": "<I=G=PAD_R3>：ズーム倍率変更"
+    },
+    {
+      "lang_id": "tutorial_optionalradio",
+      "color": 1,
+      "value": "<I=G=CALL>短押し：諜報無線"
+    },
+    {
+      "lang_id": "tutorial_advice",
+      "color": 1,
+      "value": "<I=G=CALL>短押し：無線（情報を要求）"
+    },
+    {
+      "lang_id": "tutorial_set_marker",
+      "color": 1,
+      "value": "<I=G=HOLD>：マーカー設置/解除"
+    },
+    {
+      "key": "0xe1d18a77",
+      "color": 1,
+      "value": "<I=G=HOLD>：砲撃"
+    },
+    {
+      "lang_id": "tutorial_smoke",
+      "color": 1,
+      "value": "<I=G=HOLD>：スモーク散布"
+    },
+    {
+      "key": "0x471be6e0",
+      "color": 1,
+      "value": "<I=G=HOLD>：睡眠ガス散布"
+    },
+    {
+      "lang_id": "tutorial_shield",
+      "color": 1,
+      "value": "<I=G=PAD_L2>：シールド投下"
+    },
+    {
+      "key": "0xf7586924",
+      "color": 1,
+      "value": "<I=G=PAD_Y>：機能変更"
+    },
+    {
+      "lang_id": "tutorial_horse_call",
+      "color": 1,
+      "value": "<I=G=CALL>押したまま<I=G=PAD_RS>：馬を呼ぶ"
+    },
+    {
+      "lang_id": "tutorial_horse_hide",
+      "color": 1,
+      "value": "<I=G=STANCE>：馬に隠れる/戻る"
+    },
+    {
+      "lang_id": "tutorial_horse_hide_change",
+      "color": 1,
+      "value": "<I=G=STOCK>：隠れ位置の左右切替"
+    },
+    {
+      "lang_id": "tutorial_horse_run",
+      "color": 1,
+      "value": "<I=G=EVADE>：馬を加速"
+    },
+    {
+      "lang_id": "tutorial_horse_rideon",
+      "color": 1,
+      "value": "<I=G=ACTION>：馬に乗る/降りる"
+    },
+    {
+      "lang_id": "tutorial_horse_puton",
+      "color": 1,
+      "value": "<I=G=RELOAD>長押し：馬に乗せる"
+    },
+    {
+      "lang_id": "tutorial_get_info",
+      "color": 1,
+      "value": "<I=G=ACTION>：情報を取得"
+    },
+    {
+      "key": "0xf87b6e99",
+      "color": 1,
+      "value": "<I=G=ACTION>：拘束を解除"
+    },
+    {
+      "lang_id": "tutorial_mb_device",
+      "color": 1,
+      "value": "<I=G=MBDEVICE>：端末を開く/閉じる"
+    },
+    {
+      "lang_id": "tutorial_searchlight_onoff",
+      "color": 1,
+      "value": "<I=G=PAD_RIGHT>：ライトのON/OFF"
+    },
+    {
+      "lang_id": "tutorial_toilet_hide",
+      "color": 1,
+      "value": "<I=G=ACTION>：トイレに隠れる/戻る"
+    },
+    {
+      "lang_id": "tutorial_toilet_putin",
+      "color": 1,
+      "value": "<I=G=RELOAD>：トイレに隠す"
+    },
+    {
+      "lang_id": "tutorial_garbagebox_hide",
+      "color": 1,
+      "value": "<I=G=ACTION>：ゴミ箱に隠れる/戻る"
+    },
+    {
+      "lang_id": "tutorial_garbagebox_putin",
+      "color": 1,
+      "value": "<I=G=RELOAD>：ゴミ箱に隠す"
+    },
+    {
+      "lang_id": "tutorial_ladder",
+      "color": 1,
+      "value": "<I=G=ACTION>：梯子を登る/降りる"
+    },
+    {
+      "lang_id": "tutorial_cliff",
+      "color": 1,
+      "value": "<I=G=ACTION>：崖を登る/降りる"
+    },
+    {
+      "lang_id": "tutorial_power_onoff",
+      "color": 1,
+      "value": "<I=G=ACTION>：電源のON/OFF"
+    },
+    {
+      "lang_id": "tutorial_attack",
+      "color": 1,
+      "value": "<I=G=HOLD>＋<I=G=ATTACK>：武器攻撃（構え＋攻撃）"
+    },
+    {
+      "lang_id": "tutorial_elude_up",
+      "color": 1,
+      "value": "<I=G=ACTION>：復帰する"
+    },
+    {
+      "lang_id": "tutorial_elude_down",
+      "color": 1,
+      "value": "<I=G=STANCE>：落下する"
+    },
+    {
+      "lang_id": "tutorial_cure",
+      "color": 1,
+      "value": "<I=G=ACTION>：治療"
+    },
+    {
+      "lang_id": "tutorial_reload",
+      "color": 1,
+      "value": "<I=G=RELOAD>：リロード"
+    },
+    {
+      "lang_id": "tutorial_jump",
+      "color": 1,
+      "value": "<I=G=MOVE>倒したまま<I=G=ACTION>：ジャンプ"
+    },
+    {
+      "lang_id": "tutorial_shoulder",
+      "color": 1,
+      "value": "<I=G=RELOAD>長押し：担ぐ/降ろす"
+    },
+    {
+      "lang_id": "tutorial_shoulder_throw",
+      "color": 1,
+      "value": "<I=G=ATTACK>：投げる"
+    },
+    {
+      "lang_id": "tutorial_stance",
+      "color": 1,
+      "value": "<I=G=STANCE>：姿勢変更（立ち/しゃがみ/匍匐）"
+    },
+    {
+      "lang_id": "tutorial_equipment_wp",
+      "color": 1,
+      "value": "<I=G=PAD_ALL>押したまま<I=G=PAD_RS>：武器・携行品の選択/装備"
+    },
+    {
+      "lang_id": "tutorial_look_in",
+      "color": 1,
+      "value": "<I=G=STOCK>押している間：覗き込み"
+    },
+    {
+      "lang_id": "tutorial_fence_jump",
+      "color": 1,
+      "value": "<I=G=ACTION>：段差を登る/柵を乗り越える"
+    },
+    {
+      "lang_id": "tutorial_rolling",
+      "color": 1,
+      "value": "<I=G=HOLD>押したまま<I=G=MOVE>＋<I=G=DASH>：転がり移動（移動+転がり）"
+    },
+    {
+      "lang_id": "tutorial_cover_attack",
+      "color": 1,
+      "value": "<I=G=HOLD>＋<I=G=ATTACK>：カバー攻撃（構え+攻撃）"
+    },
+    {
+      "lang_id": "tutorial_pause",
+      "color": 1,
+      "value": "<I=G=PAUSE>：ポーズ"
+    },
+    {
+      "lang_id": "tutorial_vehicle_rideon",
+      "color": 1,
+      "value": "<I=G=ACTION>：車輛に乗る"
+    },
+    {
+      "lang_id": "tutorial_vehicle_puton",
+      "color": 1,
+      "value": "<I=G=RELOAD>長押し：車輛に乗せる"
+    },
+    {
+      "lang_id": "tutorial_accelarater",
+      "color": 1,
+      "value": "<I=G=PAD_R2>：アクセル"
+    },
+    {
+      "lang_id": "tutorial_brake",
+      "color": 1,
+      "value": "<I=G=PAD_L2>：ブレーキ/バック"
+    },
+    {
+      "lang_id": "tutorial_heli_rideon",
+      "color": 1,
+      "value": "<I=G=ACTION>：ヘリに乗る"
+    },
+    {
+      "lang_id": "tutorial_heli_puton",
+      "color": 1,
+      "value": "<I=G=RELOAD>長押し：ヘリに乗せる"
+    },
+    {
+      "lang_id": "tutorial_attack_machinegun",
+      "color": 1,
+      "value": "<I=G=ATTACK>：機銃で攻撃"
+    },
+    {
+      "lang_id": "tutorial_attack_mortar",
+      "color": 1,
+      "value": "<I=G=ATTACK>：迫撃砲で攻撃"
+    },
+    {
+      "lang_id": "tutorial_attack_anti_aircraft",
+      "color": 1,
+      "value": "<I=G=ATTACK>：対空機関砲で攻撃"
+    },
+    {
+      "lang_id": "tutorial_hulton",
+      "color": 1,
+      "value": "<I=G=ACTION>長押し：フルトン回収"
+    },
+    {
+      "lang_id": "tutorial_pipe",
+      "color": 1,
+      "value": "<I=G=ACTION>：パイプを登る/降りる"
+    },
+    {
+      "lang_id": "tutorial_cqc",
+      "color": 1,
+      "value": "<I=G=ATTACK>：CQC(打撃/投げ/拘束)"
+    },
+    {
+      "lang_id": "tutorial_cqc_punch",
+      "color": 1,
+      "value": "<I=G=ATTACK>連打：打撃"
+    },
+    {
+      "lang_id": "tutorial_cqc_throw",
+      "color": 1,
+      "value": "<I=G=MOVE>倒したまま<I=G=ATTACK>短押し：投げ"
+    },
+    {
+      "lang_id": "tutorial_restraint2",
+      "color": 1,
+      "value": "<I=G=ATTACK>押している間：拘束"
+    },
+    {
+      "lang_id": "tutorial_restraint",
+      "color": 1,
+      "value": "<I=G=CQC>長押し：拘束"
+    },
+    {
+      "lang_id": "tutorial_interrogation",
+      "color": 1,
+      "value": "<I=G=CALL>押したまま<I=G=PAD_RS>：尋問（吐け/仲間はどこだ/伏せろ）"
+    },
+    {
+      "lang_id": "tutorial_swoon",
+      "color": 1,
+      "value": "<I=G=ATTACK>連打：首絞め（気絶）"
+    },
+    {
+      "lang_id": "tutorial_kill",
+      "color": 1,
+      "value": "<I=G=ACTION>：喉切り（殺害）"
+    },
+    {
+      "key": "0x1f40fd6d",
+      "color": 1,
+      "value": "打撃中<I=G=HOLD>長押し：武器奪い"
+    },
+    {
+      "lang_id": "tutorial_cqc_combo",
+      "color": 1,
+      "value": "投げた後もう一度<I=G=ATTACK>短押し：連続CQC"
+    },
+    {
+      "lang_id": "tutorial_get_item",
+      "color": 1,
+      "value": "<I=G=RELOAD>長押し：アイテムを取得"
+    },
+    {
+      "key": "0x8a311f47",
+      "color": 1,
+      "value": "<I=G=ACTION>：補給物資の受取"
+    },
+    {
+      "lang_id": "tutorial_C4_set",
+      "color": 1,
+      "value": "<I=G=HOLD>＋<I=G=ATTACK>：C-4設置（構え+設置）"
+    },
+    {
+      "lang_id": "tutorial_C4_exploding",
+      "color": 1,
+      "value": "<I=G=HOLD>＋<I=G=ACTION>：C-4起爆（構え+起爆）"
+    },
+    {
+      "lang_id": "tutorial_change_camera",
+      "color": 1,
+      "value": "<I=G=BINOS>短押し：カメラ切替（肩越し/主観）"
+    },
+    {
+      "lang_id": "tutorial_heli_getoff",
+      "color": 1,
+      "value": "<I=G=ACTION>：ヘリから降りる"
+    },
+    {
+      "lang_id": "tutorial_knock",
+      "color": 1,
+      "value": "<I=G=CALL>押したまま<I=G=PAD_RS>：ノック（敵誘い出し）"
+    },
+    {
+      "lang_id": "tutorial_change_barrel",
+      "color": 1,
+      "value": "<I=G=HOLD>＋<I=G=ACTION>：バレルの切替（構え+切替）"
+    },
+    {
+      "lang_id": "tutorial_camera_move",
+      "color": 1,
+      "value": "<I=G=CAMERA>：カメラ操作"
+    },
+    {
+      "lang_id": "tutorial_camera_zoom",
+      "color": 1,
+      "value": "<I=G=CAMERA>押している間：カメラズーム"
+    },
+    {
+      "lang_id": "tutorial_camera_change",
+      "color": 1,
+      "value": "<I=G=STOCK>短押し：カメラ位置の左右切替"
+    },
+    {
+      "lang_id": "tutorial_play_move",
+      "color": 1,
+      "value": "<I=G=MOVE>：移動"
+    },
+    {
+      "lang_id": "tutorial_play_cover",
+      "color": 1,
+      "value": "壁に向かって<I=G=MOVE>：カバー（張り付き）"
+    },
+    {
+      "lang_id": "tutorial_play_dash",
+      "color": 1,
+      "value": "<I=G=DASH>：ダッシュ"
+    },
+    {
+      "lang_id": "tutorial_play_evade",
+      "color": 1,
+      "value": "<I=G=EVADE>：緊急回避"
+    },
+    {
+      "key": "0x6f8b008d",
+      "color": 1,
+      "value": "崖に向かってゆっくり<I=G=MOVE>：エルード（ぶら下がり）"
+    },
+    {
+      "key": "0xb09bb927",
+      "color": 1,
+      "value": "カバー中に<I=G=STOCK>：覗き込み"
+    },
+    {
+      "lang_id": "tutorial_cancel",
+      "color": 1,
+      "value": "<I=G=CANCEL>：戻る"
+    },
+    {
+      "lang_id": "tutorial_sonar",
+      "color": 1,
+      "value": "<I=G=CALL>押したまま<I=G=PAD_RS>：ソナー（生物探知）"
+    },
+    {
+      "lang_id": "tutorial_order_buddy",
+      "color": 1,
+      "value": "<I=G=CALL>押したまま<I=G=PAD_RS>：バディへの指示"
+    },
+    {
+      "lang_id": "tutorial_order_child",
+      "color": 1,
+      "value": "<I=G=CALL>押したまま<I=G=PAD_RS>：子供たちへの指示"
+    },
+    {
+      "key": "0x3167fd88",
+      "color": 1,
+      "value": "<I=G=STANCE>：車輛に隠れる/戻る"
+    },
+    {
+      "key": "0x6db103f1",
+      "color": 1,
+      "value": "<I=G=PAUSE>：TIPSを見る（PAUSE）"
+    },
+    {
+      "lang_id": "tutorial_show_controller",
+      "color": 1,
+      "value": "<I=G=PAUSE>：操作方法"
+    },
+    {
+      "lang_id": "tutorial_stance2",
+      "color": 1,
+      "value": "<I=G=STANCE>長押し：匍匐（ほふく）"
+    },
+    {
+      "lang_id": "tutorial_stance3",
+      "color": 1,
+      "value": "<I=G=STANCE>：中腰になる"
+    },
+    {
+      "lang_id": "tutorial_shield2",
+      "color": 1,
+      "value": "シールドを構えた状態で<I=G=ACTION>：シールドに隠れる/戻る"
+    },
+    {
+      "lang_id": "tutorial_v_fps_tps",
+      "color": 1,
+      "value": "<I=G=PAD_R1>：カメラ切替（三人称/肩越し/主観）"
+    },
+    {
+      "lang_id": "tutorial_v_attack",
+      "color": 1,
+      "value": "<I=G=PAD_L1>：攻撃"
+    }
+  ]
+}

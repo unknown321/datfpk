@@ -4,23 +4,100 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/unknown321/datfpk/fox2"
-	"github.com/unknown321/datfpk/fpk"
-	"github.com/unknown321/datfpk/qar"
-	"github.com/unknown321/datfpk/util"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/unknown321/datfpk/dictionary"
+	"github.com/unknown321/datfpk/fox2"
+	"github.com/unknown321/datfpk/fpk"
+	"github.com/unknown321/datfpk/lng"
+	"github.com/unknown321/datfpk/qar"
+	"github.com/unknown321/datfpk/util"
 
 	"github.com/unknown321/hashing"
 )
 
 const dictionaryName = "dictionary.txt"
 const dictUrl = "https://github.com/kapuragu/mgsv-lookup-strings/raw/refs/heads/master/GzsTool/qar_dictionary.txt"
+const lngDictionaryName = "lngDictionary.txt"
 
 type jsonInput struct {
 	Type string `json:"type"`
+}
+
+func DecompileLng(in string, dictionaryPath string, out string) error {
+	dict := dictionary.DictStrCode64{}
+	df, err := os.OpenFile(dictionaryPath, os.O_RDONLY, 0444)
+	if err == nil {
+		if err = dict.Read(df); err != nil {
+			return err
+		}
+	} else {
+		slog.Warn("cannot open lng dictionary file", "error", err.Error())
+	}
+
+	input, err := os.Open(in)
+	if err != nil {
+		return err
+	}
+	defer input.Close()
+
+	l := &lng.Lng{}
+	if err = l.Read(input, dict); err != nil {
+		return err
+	}
+
+	if out == "" {
+		out = in + ".json"
+	}
+
+	data, err := l.MarshalJSON()
+	if err != nil {
+		return err
+	}
+
+	outFile, err := os.OpenFile(out, os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	if _, err = outFile.Write(data); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func CompileLng(in string, out string) error {
+	var err error
+	input, err := os.ReadFile(in)
+	if err != nil {
+		return err
+	}
+
+	l := &lng.Lng{}
+	if err = l.UnmarshalJSON(input); err != nil {
+		return err
+	}
+
+	if out == "" {
+		out = strings.TrimSuffix(in, ".json")
+	}
+
+	outFile, err := os.OpenFile(out, os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	if err = l.Write(outFile); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func DecompileFox2(in string, out string) error {
@@ -320,10 +397,12 @@ func Run() {
 		fmt.Printf("\t%s file.dat [output dir] [dictionary.txt]\n", os.Args[0])
 		fmt.Printf("\t%s file.fpk [output dir]\n", os.Args[0])
 		fmt.Printf("\t%s file.fox2 [output file]\n", os.Args[0])
+		fmt.Printf("\t%s file.lng2 [output file] [dictionary.txt]\n", os.Args[0])
 		fmt.Println()
 		fmt.Println("Pack (short syntax):")
 		fmt.Printf("\t%s definition.json [output file] [input dir]\n", os.Args[0])
 		fmt.Printf("\t%s file.fox2.xml [output file]\n", os.Args[0])
+		fmt.Printf("\t%s file.lng2.json [output file]\n", os.Args[0])
 		fmt.Println()
 		fmt.Println("Options:")
 		flag.PrintDefaults()
@@ -408,6 +487,17 @@ func Run() {
 					slog.Error("pack failed", "error", err.Error())
 					os.Exit(1)
 				}
+			case lng.LngID:
+				slog.Info("compiling lng")
+				if len(os.Args) > 2 {
+					if !strings.HasPrefix(os.Args[2], "-") {
+						*out = os.Args[2]
+					}
+				}
+				if err = CompileLng(os.Args[1], *out); err != nil {
+					slog.Error("lng compilation failed", "error", err.Error())
+					os.Exit(1)
+				}
 			default:
 				slog.Error("unknown type", "type", jj.Type)
 				os.Exit(1)
@@ -446,6 +536,25 @@ func Run() {
 			}
 			if err = CompileFox2(os.Args[1], *out); err != nil {
 				slog.Error("fox2 compilation failed", "error", err.Error())
+				os.Exit(1)
+			}
+		}
+
+		if strings.HasSuffix(os.Args[1], ".lng2") {
+			slog.Info("decompiling lng")
+			if len(os.Args) > 2 {
+				if !strings.HasPrefix(os.Args[2], "-") {
+					*out = os.Args[2]
+				}
+			}
+
+			lngFp := filepath.Join(filepath.Dir(exePath), lngDictionaryName)
+			if len(os.Args) > 3 {
+				lngFp = os.Args[3]
+			}
+
+			if err = DecompileLng(os.Args[1], lngFp, *out); err != nil {
+				slog.Error("lng decompilation failed", "error", err.Error())
 				os.Exit(1)
 			}
 		}
