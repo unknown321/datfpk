@@ -4,7 +4,7 @@ go 1.24.4
 
 require (
 	github.com/r3labs/diff/v3 v3.0.1
-	github.com/unknown321/hashing v0.0.0-20250606105117-13394d1540eb
+	github.com/unknown321/hashing v0.0.0-20261009171531-80afe2a01b14
 )
 
 require (

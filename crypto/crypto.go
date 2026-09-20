@@ -1,7 +1,7 @@
 package crypto
 
 const Magic1 = 0xA0F8EFE6
-const Magic2 = 0xE3F8EFE6
+const Magic2 = 0xE3F8EFE6 // also used on consoles
 
 func GetHeaderSize(encryption uint32) int {
 	headerSize := 0

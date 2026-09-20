@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"log/slog"
 )
 
 type Header struct {
@@ -24,7 +25,23 @@ func (h *Header) IsFpkd() bool {
 }
 
 func (h *Header) IsValid() bool {
-	return bytes.Compare(h.Magic[:], MagicFpkd[:]) == 0 || bytes.Compare(h.Magic[:], MagicFpk[:]) == 0
+	if bytes.Compare(h.Magic[:], MagicFpkPS3[:]) == 0 {
+		slog.Error("ps3 fpk not supported yet")
+		return false
+	}
+
+	if bytes.Compare(h.Magic[:], MagicFpkdPS3[:]) == 0 {
+		slog.Error("ps3 fpkd not supported yet")
+		return false
+	}
+
+	for _, m := range Magics {
+		if bytes.Compare(h.Magic[:], m[:]) == 0 {
+			return true
+		}
+	}
+
+	return false
 }
 
 func (h *Header) Read(reader io.Reader) error {

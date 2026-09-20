@@ -3,11 +3,12 @@ package fpk
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/r3labs/diff/v3"
-	"github.com/unknown321/datfpk/util"
 	"os"
 	"reflect"
 	"testing"
+
+	"github.com/r3labs/diff/v3"
+	"github.com/unknown321/datfpk/util"
 )
 
 const datadir = "testdata/"
@@ -367,4 +368,12 @@ func TestFpk_Write(t *testing.T) {
 	//}
 	//rr.Write(b.Bytes())
 	//rr.Close()
+}
+
+func TestFpk_ReadConsole(t *testing.T) {
+	//t.Fatal("not implemented")
+}
+
+func TestFpk_WriteConsole(t *testing.T) {
+	//t.Fatal("not implemented")
 }

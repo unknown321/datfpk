@@ -11,6 +11,8 @@ github.com/unknown321/cityhash v0.0.0-20250414150752-0134dcb10139 h1:d5ceFvXPy1r
 github.com/unknown321/cityhash v0.0.0-20250414150752-0134dcb10139/go.mod h1:QVJK+yrAaYDX48UdKKhG6TU1M1L1V6KJvciTADO68qg=
 github.com/unknown321/hashing v0.0.0-20250606105117-13394d1540eb h1:BQPCXmV47z8ZpPC+C6LZjgxe/tKaT6hBgg4rLUyu5ic=
 github.com/unknown321/hashing v0.0.0-20250606105117-13394d1540eb/go.mod h1:eU/88EXZMXhMg3mPY9JUu93xH4DKw5hIlJa7M6Z004E=
+github.com/unknown321/hashing v0.0.0-20261009171531-80afe2a01b14 h1:ZmZRV4l0OfUto8TswC3NconmRgRXJgGy785OlBFxEAw=
+github.com/unknown321/hashing v0.0.0-20261009171531-80afe2a01b14/go.mod h1:eU/88EXZMXhMg3mPY9JUu93xH4DKw5hIlJa7M6Z004E=
 github.com/vmihailenco/msgpack/v5 v5.3.5 h1:5gO0H1iULLWGhs2H5tbAHIZTV8/cYafcFOr9znI5mJU=
 github.com/vmihailenco/msgpack/v5 v5.3.5/go.mod h1:7xyJ9e+0+9SaZT0Wt1RGleJXzli6Q/V5KbhBonMG9jc=
 github.com/vmihailenco/tagparser/v2 v2.0.0 h1:y09buUbR+b5aycVFQs/g70pqKVZNBmxwAhO7/IwNM9g=

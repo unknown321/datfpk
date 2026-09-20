@@ -5,13 +5,14 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
-	"github.com/unknown321/datfpk/util"
 	"io"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/unknown321/datfpk/util"
 
 	"github.com/unknown321/hashing"
 )
@@ -30,11 +31,14 @@ type Qar struct {
 	FilePath string  `json:"-"`
 	Entries  []Entry `json:"entries"`
 
-	handle io.ReadSeeker
+	handle    io.ReadSeeker
+	isConsole bool
 }
 
-var magic = [4]byte{0x53, 0x51, 0x41, 0x52} // SQAR
-const QarID = "qar"
+var PCMagic = [4]byte{0x53, 0x51, 0x41, 0x52} // SQAR
+
+const ID = "qar"
+const IDConsole = "qarconsole"
 
 type qjs struct {
 	Type    string  `json:"type"`
@@ -44,8 +48,15 @@ type qjs struct {
 }
 
 func (q *Qar) MarshalJSON() ([]byte, error) {
+	id := ID
+	// todo possible difference between consoles?
+	switch q.isConsole {
+	case true:
+		id = IDConsole
+	}
+
 	return json.Marshal(qjs{
-		Type:    QarID,
+		Type:    id,
 		Flags:   q.Flags,
 		Version: q.Version,
 		Entries: q.Entries,
@@ -58,8 +69,13 @@ func (q *Qar) UnmarshalJSON(i []byte) error {
 		return err
 	}
 
-	if qq.Type != QarID {
-		return fmt.Errorf("unexpected type %s, want %s", qq.Type, QarID)
+	switch qq.Type {
+	case ID:
+		break
+	case IDConsole:
+		q.isConsole = true
+	default:
+		return fmt.Errorf("unexpected type %s, want %s or %s", qq.Type, ID, IDConsole)
 	}
 
 	q.Flags = qq.Flags
@@ -95,35 +111,109 @@ func (q *Qar) Read(f io.ReadSeeker) error {
 		return fmt.Errorf("cannot read magic: %w", err)
 	}
 
-	if bytes.Compare(q.Magic[:], magic[:]) != 0 {
-		return fmt.Errorf("magic mismatch")
+	q.isConsole = true
+	if bytes.Compare(q.Magic[:], PCMagic[:]) == 0 {
+		q.isConsole = false
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.Flags); err != nil {
+	if q.isConsole {
+		err = q.readConsole(f)
+	} else {
+		err = q.readPC(f)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// readConsole reads qar header and entries headers, no data
+func (q *Qar) readConsole(f io.ReadSeeker) error {
+	byteOrder := binary.LittleEndian
+
+	var err error
+
+	// qar header
+	{
+		if _, err = f.Seek(-4, io.SeekEnd); err != nil {
+			return err
+		}
+
+		if err = binary.Read(f, byteOrder, &q.Version); err != nil {
+			return err
+		}
+
+		var mysticVar = 0
+		if q.Version == 0x24 {
+			mysticVar = 0x8b
+		}
+		if q.Version == 0x14 {
+			mysticVar = 0x6b
+		}
+
+		if mysticVar == 0 {
+			return fmt.Errorf("unsupported version, got %x, want 0x14 or 0x24", q.Version)
+		}
+
+		if _, err = f.Seek(-20, io.SeekEnd); err != nil {
+			return err
+		}
+
+		if err = binary.Read(f, byteOrder, &q.FileCount); err != nil {
+			return err
+		}
+
+		if _, err = f.Seek(-36, io.SeekEnd); err != nil {
+			return err
+		}
+	}
+
+	q.Entries = make([]Entry, q.FileCount)
+	if _, err = q.handle.Seek(-1*HeaderSizeConsole*int64(q.FileCount), io.SeekCurrent); err != nil {
+		return fmt.Errorf("cannot seek to the entry table start")
+	}
+
+	for i := range q.FileCount {
+		if err = q.Entries[i].Header.ReadConsole(q.handle, binary.LittleEndian); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// readPC reads qar header and entries headers
+func (q *Qar) readPC(f io.ReadSeeker) error {
+	byteOrder := binary.LittleEndian
+	var err error
+
+	if err = binary.Read(f, byteOrder, &q.Flags); err != nil {
 		return fmt.Errorf("cannot read flags: %w", err)
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.FileCount); err != nil {
+	if err = binary.Read(f, byteOrder, &q.FileCount); err != nil {
 		return fmt.Errorf("cannot read file count: %w", err)
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.UnknownCount); err != nil {
+	if err = binary.Read(f, byteOrder, &q.UnknownCount); err != nil {
 		return fmt.Errorf("cannot read unknown count: %w", err)
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.BlockFileEnd); err != nil {
+	if err = binary.Read(f, byteOrder, &q.BlockFileEnd); err != nil {
 		return fmt.Errorf("cannot read block file end: %w", err)
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.OffsetFirstFile); err != nil {
+	if err = binary.Read(f, byteOrder, &q.OffsetFirstFile); err != nil {
 		return fmt.Errorf("cannot read offset first file: %w", err)
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.Version); err != nil {
+	if err = binary.Read(f, byteOrder, &q.Version); err != nil {
 		return fmt.Errorf("cannot read version: %w", err)
 	}
 
-	if err = binary.Read(f, binary.LittleEndian, &q.Unknown2); err != nil {
+	if err = binary.Read(f, byteOrder, &q.Unknown2); err != nil {
 		return fmt.Errorf("cannot read unknown2: %w", err)
 	}
 
@@ -135,12 +225,6 @@ func (q *Qar) Read(f io.ReadSeeker) error {
 	q.Version ^= xorMask1  // 1 2
 	q.Unknown2 ^= xorMask2 // 0
 
-	// Determines the alignment block size.
-	blockShiftBits := 10
-	if (q.Flags & 0x800) > 0 {
-		blockShiftBits = 12
-	}
-
 	sectionsData := make([]byte, 8*q.FileCount)
 	if _, err = f.Read(sectionsData); err != nil {
 		return fmt.Errorf("cannot read sections: %w", err)
@@ -149,6 +233,12 @@ func (q *Qar) Read(f io.ReadSeeker) error {
 	var sections []uint64
 	if sections, err = DecryptSectionList(q.FileCount, sectionsData, q.Version, false); err != nil {
 		return fmt.Errorf("cannot decrypt section list: %w", err)
+	}
+
+	// Determines the alignment block size.
+	blockShiftBits := 10
+	if (q.Flags & 0x800) > 0 {
+		blockShiftBits = 12
 	}
 
 	for _, section := range sections {
@@ -160,7 +250,7 @@ func (q *Qar) Read(f io.ReadSeeker) error {
 		}
 
 		e := Entry{}
-		if err = e.Read(f, q.Version); err != nil {
+		if err = e.Read(f, q.Version, byteOrder); err != nil {
 			return fmt.Errorf("cannot read entry: %w", err)
 		}
 
@@ -267,18 +357,19 @@ func (q *Qar) ExtractTo(path string, hash uint64, writer io.Writer) (int, error)
 		//slog.Debug("hashfromname", "value", fmt.Sprintf("0x%x", hashFromName), "ext", filepath.Ext(path)[1:])
 	}
 
-	for _, e := range q.Entries {
+	// O(n), but we keep order
+	for n, _ := range q.Entries {
 		//slog.Info("q",
 		//	"ph", fmt.Sprintf("%x", e.Header.PathHash),
 		//	"hash", fmt.Sprintf("%x", hash),
 		//	"hashFromName", fmt.Sprintf("%x", hashFromName))
-		if e.Header.PathHash != hash {
-			if e.Header.PathHash != hashFromName {
+		if q.Entries[n].Header.PathHash != hash {
+			if q.Entries[n].Header.PathHash != hashFromName {
 				continue
 			}
 		}
 
-		entry = &e
+		entry = &q.Entries[n]
 		break
 	}
 
@@ -286,8 +377,14 @@ func (q *Qar) ExtractTo(path string, hash uint64, writer io.Writer) (int, error)
 		return 0, fmt.Errorf("entry not found, path: %s", path)
 	}
 
-	if err = entry.ReadData(q.handle); err != nil {
-		return 0, fmt.Errorf("qar entry read data: %w", err)
+	if q.isConsole {
+		if err = entry.ReadDataConsole(q.handle); err != nil {
+			return 0, fmt.Errorf("qar entry read data: %w", err)
+		}
+	} else {
+		if err = entry.ReadData(q.handle); err != nil {
+			return 0, fmt.Errorf("qar entry read data: %w", err)
+		}
 	}
 
 	n, err := writer.Write(entry.Data)
@@ -342,8 +439,102 @@ func (q *Qar) SaveDefinition(writer io.Writer) error {
 	return nil
 }
 
+func (q *Qar) WriteConsole(file io.ReadWriteSeeker, baseDir string, printLog bool) error {
+	var err error
+	alignment := int64(16)
+
+	if _, err = file.Seek(0, io.SeekStart); err != nil {
+		return fmt.Errorf("write console seek: %w", err)
+	}
+
+	dataSize := 0
+	q.FileCount = uint32(len(q.Entries))
+	for i, e := range q.Entries {
+		if q.Entries[i].Header.DataOffset, err = file.Seek(0, io.SeekCurrent); err != nil {
+			return fmt.Errorf("write console seek while writing entries: %w", err)
+		}
+
+		if printLog {
+			slog.Info("writing",
+				"entry", e.Header.FilePath,
+				"encrypted", fmt.Sprintf("%x", e.DataHeader.EncryptionMagic),
+				"key", fmt.Sprintf("%x", e.DataHeader.Key),
+			)
+		}
+
+		var data []byte
+		if len(e.Data) == 0 {
+			pl := ""
+			if pl, err = filepath.Localize(strings.TrimPrefix(e.Header.FilePath, "/")); err != nil {
+				return fmt.Errorf("cannot localize entry path %s: %w", pl, err)
+			}
+
+			p := filepath.Join(baseDir, e.Header.FilePath)
+			if e.Data, err = os.ReadFile(p); err != nil {
+				return fmt.Errorf("read entry data: %w", err)
+			}
+		}
+
+		data, err = e.WriteConsole()
+		if err != nil {
+			return fmt.Errorf("write console entry: %w", err)
+		}
+
+		q.Entries[i].Header.UncompressedSize = uint32(len(data))
+		if q.Entries[i].Header.Compressed {
+			return fmt.Errorf("console compression not implemented")
+		}
+		dataSize += len(data)
+
+		if _, err = file.Write(data); err != nil {
+			return fmt.Errorf("write console entry to file: %w", err)
+		}
+
+		if _, err = util.AlignWrite(file, alignment); err != nil {
+			return fmt.Errorf("write console alignment: %w", err)
+		}
+	}
+
+	entryTableOffset, err := file.Seek(0, io.SeekCurrent)
+	if err != nil {
+		return fmt.Errorf("write console, get entry table offset: %w", err)
+	}
+
+	entryTableOffset /= 16
+
+	for _, entry := range q.Entries {
+		data, err1 := entry.Header.BytesConsole()
+		if err1 != nil {
+			return fmt.Errorf("write console entry header: %w", err1)
+		}
+
+		if _, err = file.Write(data); err != nil {
+			return fmt.Errorf("write console entry header to file: %w", err)
+		}
+	}
+
+	// header
+	{
+		binary.Write(file, binary.LittleEndian, uint32(dataSize))
+		binary.Write(file, binary.LittleEndian, uint32(0)) // ??
+		binary.Write(file, binary.LittleEndian, uint32(0)) // ??
+		binary.Write(file, binary.LittleEndian, uint32(0)) // ??
+		binary.Write(file, binary.LittleEndian, q.FileCount)
+		binary.Write(file, binary.LittleEndian, uint32(0x71610000))       // ??, same for ps3 and xbox360
+		binary.Write(file, binary.LittleEndian, uint32(entryTableOffset)) // ??
+		binary.Write(file, binary.LittleEndian, uint32(0))                // ??
+		binary.Write(file, binary.LittleEndian, q.Version)
+	}
+
+	return nil
+}
+
+// Write creates new QAR file
 func (q *Qar) Write(file io.ReadWriteSeeker, baseDir string, printLog bool) error {
 	q.handle = file
+	if q.isConsole {
+		return q.WriteConsole(file, baseDir, printLog)
+	}
 
 	shift := 10 // 1024
 	if q.Flags&0x800 > 0 {
@@ -430,7 +621,7 @@ func (q *Qar) Write(file io.ReadWriteSeeker, baseDir string, printLog bool) erro
 	q.FileCount = uint32(len(q.Entries))
 
 	// error handling? nah
-	file.Write(magic[:])
+	file.Write(PCMagic[:])
 	binary.Write(file, binary.LittleEndian, q.Flags^xorTable[0])
 	binary.Write(file, binary.LittleEndian, q.FileCount^xorTable[1])
 	binary.Write(file, binary.LittleEndian, q.UnknownCount^xorTable[2]) // not used in GzsTool

@@ -175,37 +175,33 @@ func ExtractQar(qarPath string, dictionaryPath string, outDir string) error {
 
 	dictFile, err := os.Open(dictionaryPath)
 	if err != nil {
-		slog.Error("cannot open QAR dictionary", "path", dictionaryName, "error", err.Error())
-		os.Exit(1)
+		return fmt.Errorf("cannot open QAR dictionary, path %s, error %w", dictionaryPath, err)
 	}
 	defer dictFile.Close()
 
 	if err = dict.Read(dictFile); err != nil {
-		slog.Error("cannot read QAR dictionary", "error", err.Error())
-		os.Exit(1)
+		return fmt.Errorf("cannot read QAR dictionary: %w", err)
 	}
+
 	slog.Info("QAR dictionary entries", "count", len(dict.Hashes))
 
 	if outDir != "" {
 		o, err := os.Stat(outDir)
 		if os.IsNotExist(err) {
 			if err = os.MkdirAll(outDir, 0755); err != nil {
-				slog.Error("cannot create outdir", "error", err.Error())
-				os.Exit(1)
+				return fmt.Errorf("cannot create output directory: %w", err)
 			}
 		}
 		if err == nil && o != nil {
 			if !o.IsDir() {
-				slog.Error("not a directory", "path", outDir)
-				os.Exit(1)
+				return fmt.Errorf("output directory is not a directory, path %s", outDir)
 			}
 		}
 	}
 
 	q := qar.Qar{}
 	if err = q.ReadFrom(qarPath); err != nil {
-		slog.Error("QAR read error", "error", err.Error())
-		os.Exit(1)
+		return fmt.Errorf("cannot read QAR from path %s, error %w", qarPath, err)
 	}
 
 	defer q.Close()
@@ -224,7 +220,17 @@ func ExtractQar(qarPath string, dictionaryPath string, outDir string) error {
 		if !resolved {
 			q.Entries[n].Header.NameHashForPacking = e.Header.PathHash
 		}
-		slog.Info("qar", "entry", entryName, "pathHash", fmt.Sprintf("%x", e.Header.PathHash), "offset", e.Header.DataOffset, "encrypted", e.DataHeader.EncryptionMagic > 0, "key", fmt.Sprintf("%x", e.DataHeader.Key), "compressed", e.Header.Compressed)
+
+		// console versions have their data headers close to data,
+		// so encryption and key are unavailable at this point and not logged
+		slog.Info("extract",
+			"entry", entryName,
+			"pathHash", fmt.Sprintf("%x", e.Header.PathHash),
+			"offset", e.Header.DataOffset,
+			"encrypted", e.DataHeader.EncryptionMagic > 0,
+			"key", fmt.Sprintf("%x", e.DataHeader.Key),
+			"compressed", e.Header.Compressed,
+		)
 
 		if _, err = q.Extract(entryName, e.Header.PathHash, outDir); err != nil {
 			return err
@@ -236,6 +242,7 @@ func ExtractQar(qarPath string, dictionaryPath string, outDir string) error {
 	if err != nil {
 		return fmt.Errorf("cannot open description file %s for writing: %w", descName, err)
 	}
+	defer desc.Close()
 
 	if err = q.SaveDefinition(desc); err != nil {
 		return fmt.Errorf("cannot save description to %s: %w", descName, err)
@@ -476,13 +483,13 @@ func Run() {
 			}
 
 			switch jj.Type {
-			case fpk.FpkdID, fpk.FpkID:
+			case fpk.FpkdID, fpk.FpkID, fpk.FpkIDPS3, fpk.FpkdIDPS3:
 				slog.Info("fpk")
 				if err = PackFpk(os.Args[1], *out, *inputDir); err != nil {
 					slog.Error("pack failed", "error", err.Error())
 					os.Exit(1)
 				}
-			case qar.QarID:
+			case qar.ID, qar.IDConsole:
 				if err = PackQar(os.Args[1], *out, *inputDir); err != nil {
 					slog.Error("pack failed", "error", err.Error())
 					os.Exit(1)

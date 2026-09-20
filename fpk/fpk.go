@@ -3,18 +3,29 @@ package fpk
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/unknown321/datfpk/util"
 	"io"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/unknown321/datfpk/util"
 )
 
-var MagicFpk = [10]byte{0x66, 0x6f, 0x78, 0x66, 0x70, 0x6b, 0x00, 0x77, 0x69, 0x6e}  // "foxfpk\000win"
-var MagicFpkd = [10]byte{0x66, 0x6f, 0x78, 0x66, 0x70, 0x6b, 0x64, 0x77, 0x69, 0x6e} // "foxfpkdwin"
+var MagicFpk = [10]byte{0x66, 0x6f, 0x78, 0x66, 0x70, 0x6b, 0x00, 0x77, 0x69, 0x6e}     // "foxfpk\000win"
+var MagicFpkd = [10]byte{0x66, 0x6f, 0x78, 0x66, 0x70, 0x6b, 0x64, 0x77, 0x69, 0x6e}    // "foxfpkdwin"
+var MagicFpkPS3 = [10]byte{0x66, 0x6f, 0x78, 0x66, 0x70, 0x6b, 0x00, 0x70, 0x73, 0x33}  // "foxfpk\000ps3"
+var MagicFpkdPS3 = [10]byte{0x66, 0x6F, 0x78, 0x66, 0x70, 0x6B, 0x64, 0x70, 0x73, 0x33} //foxfpkdps3
+
+var Magics = [][10]byte{
+	MagicFpk, MagicFpkd,
+	MagicFpkPS3, MagicFpkdPS3,
+}
+
 const FpkID = "fpk"
 const FpkdID = "fpkd"
+const FpkIDPS3 = "fpkps3"
+const FpkdIDPS3 = "fpkdps3"
 
 type Fpk struct {
 	Header     Header
@@ -36,6 +47,10 @@ func (f *Fpk) MarshalJSON() ([]byte, error) {
 	switch f.Header.Magic {
 	case MagicFpk:
 		t = FpkID
+	case MagicFpkPS3:
+		t = FpkIDPS3
+	case MagicFpkdPS3:
+		t = FpkdIDPS3
 	case MagicFpkd:
 		t = FpkdID
 	default:
@@ -90,7 +105,7 @@ func (f *Fpk) ReadFrom(path string, printLog bool) error {
 	//defer file.Close()
 
 	err = f.Read(file, printLog)
-	return nil
+	return err
 }
 
 func (f *Fpk) Read(reader io.ReadSeeker, printLog bool) error {
